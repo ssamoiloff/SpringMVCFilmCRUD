@@ -4,9 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Film MVC Home</title>
 </head>
 <body>
-	<h1>Shitty Britches</h1>
+	<a href="./searchById.jsp">Search by film ID</a>
+	<h3></h>
+	
 </body>
 </html>
