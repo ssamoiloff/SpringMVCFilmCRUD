@@ -19,20 +19,38 @@ public class FilmController {
 		this.filmDAO = filmDAO;
 	}
 
-	@RequestMapping(path="home.do")
+	@RequestMapping(path = "home.do")
 	public ModelAndView home() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("WEB-INF/views/home.jsp");
-		
+
 		return mv;
 	}
+
+	@RequestMapping(path = "searchById.do")
+	public ModelAndView searchById() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("WEB-INF/views/searchById.jsp");
+
+		return mv;
+	}
+<<<<<<< HEAD
 	
 	@RequestMapping(path = "GetFilmById.do", params = "filmId", method = RequestMethod.GET)
 	public ModelAndView get(int filmId) {
+=======
+
+	@RequestMapping(path = "getFilmById.do", params = "filmId", method = RequestMethod.GET)
+	public ModelAndView getFilmById(String filmId) {
+>>>>>>> a3d87ad42286be1b75bf6cf5e88962fc74f1a5ff
 		ModelAndView mv = new ModelAndView();
 		Film film = filmDAO.findFilmById(filmId); 		/*(Integer.parseInt(filmId));*/
 		mv.addObject("film", film);
+<<<<<<< HEAD
 		mv.setViewName("film");
+=======
+		mv.setViewName("WEB-INF/views/searchById.jsp");
+>>>>>>> a3d87ad42286be1b75bf6cf5e88962fc74f1a5ff
 		return mv;
 	}
 
