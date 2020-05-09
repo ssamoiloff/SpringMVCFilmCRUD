@@ -1,23 +1,23 @@
 package com.skilldistillery.film.data;
 
-import com.skilldistillery.film.entities.Film;
+import com.skilldistillery.film.entities.Actor;
 
-public class FilmDAOImpl implements FilmDAO{
+public class ActorDAOImpl implements ActorDAO{
 
 	@Override
-	public Film createFilm(Film film) {
+	public Actor createFilm(Actor film) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Film updateFilm(Film film) {
+	public Actor updateFilm(Actor film) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void deleteFilm(Film film) {
+	public void deleteFilm(Actor film) {
 		// TODO Auto-generated method stub
 		
 	}
