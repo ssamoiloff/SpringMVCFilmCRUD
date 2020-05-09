@@ -7,8 +7,8 @@
 <title>Film MVC Home</title>
 </head>
 <body>
-	<a href="./searchById.jsp">Search by film ID</a>
-	<h3></h>
+	<a href="getFilmById.do">Search by film ID</a>
+	
 	
 </body>
 </html>

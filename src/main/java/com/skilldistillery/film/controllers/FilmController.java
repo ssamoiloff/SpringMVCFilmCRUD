@@ -27,12 +27,12 @@ public class FilmController {
 		return mv;
 	}
 	
-	@RequestMapping(path = "getFilmById.do", params = "filmId", method = RequestMethod.GET)
-	public ModelAndView getFilmById(String filmId) {
+	@RequestMapping(path = "GetFilmById.do", params = "filmId", method = RequestMethod.GET)
+	public ModelAndView get(int filmId) {
 		ModelAndView mv = new ModelAndView();
-		Film film = filmDAO.findFilmById(Integer.parseInt(filmId));
+		Film film = filmDAO.findFilmById(filmId); 		/*(Integer.parseInt(filmId));*/
 		mv.addObject("film", film);
-		mv.setViewName("WEB-INF/views/home.jsp");
+		mv.setViewName("film");
 		return mv;
 	}
 
