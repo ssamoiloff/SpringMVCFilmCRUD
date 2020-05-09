@@ -5,19 +5,19 @@ import com.skilldistillery.film.entities.Actor;
 public class ActorDAOImpl implements ActorDAO{
 
 	@Override
-	public Actor createFilm(Actor film) {
+	public Actor createActor(Actor actor) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public Actor updateFilm(Actor film) {
+	public Actor updateActor(Actor actor) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void deleteFilm(Actor film) {
+	public void deleteActor(Actor actor) {
 		// TODO Auto-generated method stub
 		
 	}
