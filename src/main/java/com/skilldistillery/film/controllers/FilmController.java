@@ -40,7 +40,7 @@ public class FilmController {
     public ModelAndView createFilm(Film film, RedirectAttributes redir) {
     	Film checkFilm = filmDAO.createFilm(film);
     	ModelAndView mv = new ModelAndView();
-    	redir.addFlashAttribute("film", checkFilm);
+    	redir.addFlashAttribute("checkFilm", checkFilm);
     	mv.setViewName("redirect:filmCreated.do");
     	return mv;
     }

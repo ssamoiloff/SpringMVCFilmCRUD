@@ -39,16 +39,16 @@
 
 		<input type="submit" value="Create The Film" />
 
-	</form>
+	 </form>
 	<c:choose>
-		<c:when test="${checkFilm != null}">
-	${film}
- </c:when>
+		<c:when test="${checkFilm != null}"> 
+	${checkFilm}
+  </c:when>
 		<c:otherwise>
 		Film not submitted
 		</c:otherwise>
-	</c:choose>
-
+	</c:choose> 
+<a href="home.do">Home</a>
 
 </body>
 </html>

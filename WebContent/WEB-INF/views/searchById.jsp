@@ -13,5 +13,7 @@
 			value="Search Film" />
 	</form>
 	${film}
+	
+	<a href="home.do">Home</a>
 </body>
 </html>
