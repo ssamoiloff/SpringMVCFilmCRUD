@@ -18,12 +18,68 @@
 			value="Search Film" button type="button"
 			class="btn btn-primary btn-sm" />
 	</form>
-	${film}
 	<br>
 	<br>
 	<c:choose>
 		<c:when test="${film != null}">
-			<a href="deleteFilm.do" button type="button" class="btn btn-outline-primary">Delete</a>
+			<strong><em>${film.title}</em></strong>
+			<br>
+			<br>
+			<form method="POST">
+				<div class="form-group">
+				<label for="title">Title</label><br>
+				<input type="text" name="title" id="title" value="${film.title}"/><br><br>
+				</div>
+				<div class="form-group">
+				<label for="desc">Description</label><br>
+				<input type="text" name="description" id="desc" value="${film.description}"/><br><br>
+				</div>
+				<div class="form-group">
+				<label for="relYear">Release Year</label><br>
+				<input type="text" name="release year" id="relYear" value="${film.releaseYear}"/><br><br>
+				</div>
+				<div class="form-group">
+				<label for="rentDur">Rental Duration</label><br>
+				<input type="text" name="rental duration" id="rentDur" value="${film.rentalDuration}"/><br><br>
+				</div>
+				<div class="form-group">
+				<label for="rentRate">Rental Rate</label><br>
+				<input type="text" name="rental rate" id="rentRate" value="${film.title}"/><br><br>
+				</div>
+				<div class="form-group">
+				<label for="length">Length</label><br>
+				<input type="text" name="length" value="${film.length}"/><br><br>
+				</div>
+				<div class="form-group">
+				<label for="repCost">Replacement Cost</label><br>
+				<input type="text" name="replacement cost" id="repCost" value="${film.replacementCost}"/><br><br>
+				</div>
+				<div class="form-group">
+				<label for="rating">Rating</label><br>
+				<input list="rating" name="rating" value="${film.rating}"/>
+						<datalist id='rating'>
+							<%-- <option value="${film.specialFeatures}" selected> --%>
+							<option value="G">
+							<option value="PG">
+							<option value="PG13">
+							<option value="R">
+							<option value="NC17">
+						</datalist><br><br>
+				</div>
+				<div class="form-group">
+				<label for="spFeat">Special Features</label><br>
+					<input list="spFeatList" name="specialFeatures" value="${film.specialFeatures}"/>
+						<datalist id='spFeatList'>
+							<%-- <option value="${film.specialFeatures}" selected> --%>
+							<option value="Trailers">
+							<option value="Commentaries">
+							<option value="Deleted Scenes">
+							<option value="Behind the Scenes">
+						</datalist>
+				</div><br><br>
+			</form>
+			<button type="submit" formaction="deleteFilm.do" class="btn btn-outline-primary">Delete</button>
+			<button type="submit" formaction="updateFilm.do" class="btn btn-outline-primary">Update</button>
 		</c:when>
 		<c:when test="${filmNull == true}">
 			<div class="alert alert-danger" role="alert">Film not found</div>

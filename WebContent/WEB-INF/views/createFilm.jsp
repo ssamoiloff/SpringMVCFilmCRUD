@@ -64,17 +64,6 @@
 			class="btn btn-primary btn-sm" />
 
 	</form>
-	<c:choose>
-		<c:when test="${checkFilm != null}">
-			<div class="alert alert-success" role="alert">${checkFilm}</div>
-		</c:when>
-		<c:when test="${checkFilm == null}">
-			<div class="alert alert-danger" role="alert">Film not submitted</div>
-		</c:when>
-		<c:otherwise>
-
-		</c:otherwise>
-	</c:choose>
 	<a href="home.do" button type="button" class="btn btn-outline-primary">Home</a>
 
 

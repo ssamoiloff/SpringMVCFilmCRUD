@@ -48,9 +48,10 @@ public class FilmController {
 
 	@RequestMapping(path = "createFilm.do", method = RequestMethod.POST)
 	public ModelAndView createFilm(Film film, RedirectAttributes redir) {
-		Film checkFilm = filmDAO.createFilm(film);
 		ModelAndView mv = new ModelAndView();
-		redir.addFlashAttribute("checkFilm", checkFilm);
+		Film checkFilm = filmDAO.createFilm(film);
+		mv.addObject("checkFilm", checkFilm);
+		redir.addFlashAttribute("film", film);
 		mv.setViewName("redirect:filmCreated.do");
 		return mv;
 	}
@@ -58,11 +59,11 @@ public class FilmController {
 	@RequestMapping(path = "filmCreated.do", method = RequestMethod.GET)
 	public ModelAndView created() {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("WEB-INF/views/createFilm.jsp");
+		mv.setViewName("WEB-INF/views/filmCreated.jsp");
 		return mv;
 	}
 
-	@RequestMapping(path = "createAFilmPage.do")
+	@RequestMapping(path = "createAFilmPage.do", method = RequestMethod.GET)
 	public ModelAndView createAFilmPage() {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("WEB-INF/views/createFilm.jsp");
@@ -84,13 +85,6 @@ public class FilmController {
 		mv.setViewName("WEB-INF/views/searchById.jsp");
 		return mv;
 	}
-//    
-//    @RequestMapping(path = "deleteAFilmPage.do")
-//    public ModelAndView deleteAFilmPage() {
-//        ModelAndView mv = new ModelAndView();
-//        mv.setViewName("WEB-INF/views/searchById.jsp");
-//        return mv;
-//   }
 
 	@RequestMapping(path = "updateFilm.do", method = RequestMethod.POST)
 	public ModelAndView updateFilm(Film film, RedirectAttributes redir) {
