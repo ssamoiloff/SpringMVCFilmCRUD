@@ -17,7 +17,6 @@ public class FilmDAOImpl implements FilmDAO {
 	private static String url = "jdbc:mysql://localhost:3306/sdvid?useSSL=false&useLegacyDatetimeCode=false&serverTimezone=MST";
 	private final String user = "root";
 	private final String pass = "root";
-
 	private final String fullDataQuery = "SELECT film.*, language.* FROM film JOIN language "
 			+ "ON film.language_id = language.id ";
 
@@ -76,7 +75,6 @@ public class FilmDAOImpl implements FilmDAO {
 			stmt.setDouble(8, film.getReplacementCost());
 			stmt.setString(9, film.getRating());
 			stmt.setString(10, film.getSpecialFeatures());
-			System.out.println(stmt);
 			int uc = stmt.executeUpdate();
 			System.out.println(uc + " film records created");
 			ResultSet keys = stmt.getGeneratedKeys();
@@ -147,4 +145,5 @@ public class FilmDAOImpl implements FilmDAO {
 		stmt.close();
 		return names;
 	}
+
 }
