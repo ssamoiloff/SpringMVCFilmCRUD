@@ -8,6 +8,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.skilldistillery.film.data.FilmDAO;
 import com.skilldistillery.film.entities.Film;
+
 @Controller
 public class FilmController {
     @Autowired
@@ -31,7 +32,12 @@ public class FilmController {
     public ModelAndView getFilmById(String filmId) {
         ModelAndView mv = new ModelAndView();
         Film film = filmDAO.findFilmById(Integer.parseInt(filmId));
+        boolean filmNull = false;
         mv.addObject("film", film);
+        if (film == null) {
+        	filmNull = true;
+        	mv.addObject("filmNull", filmNull);
+        }
         mv.setViewName("WEB-INF/views/searchById.jsp");
         return mv;
     }
