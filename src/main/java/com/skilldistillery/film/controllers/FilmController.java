@@ -51,5 +51,12 @@ public class FilmController {
     	mv.setViewName("WEB-INF/views/createFilm.jsp");
     	return mv;
     }
+    
+    @RequestMapping(path = "createAFilmPage.do")
+    public ModelAndView createAFilmPage() {
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("WEB-INF/views/createFilm.jsp");
+        return mv;
+    }
 }
 

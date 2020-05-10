@@ -12,6 +12,6 @@
 <body>
 	<a href="searchById.do">Search By Film ID</a>
 
-	<a href="getFilmById.do">Search By Film ID</a> ​
+	<a href="createAFilmPage.do">Create a Film</a> ​
 </body>
 </html>

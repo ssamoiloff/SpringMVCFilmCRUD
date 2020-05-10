@@ -10,7 +10,7 @@
 	<h5>Create Your Film</h5>
 	<h7>Fill out the below fields.</h7>
 	
-	<form action="createFilm.do" method="POST">
+	<form action="createFilm.do" method="post">
 			
 		Title: <input type="text" name="title" value="" /> 
 			
