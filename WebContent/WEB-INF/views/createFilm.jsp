@@ -12,24 +12,30 @@
 	
 	<form action="createFilm.do" method="POST">
 			
-		Title: <input type="text" name="title" value="" /> 
+		Title: <input type="text" name="title"/> 
 			
-		Description: <input type="text" name="description" value="" /> 
+		Description: <input type="text" name="description"/> 
 			
-		Release Year: <input type="text" name="releaseYear" value="" /> 
+		Release Year: <input type="text" name="releaseYear"/> 
 			
-		Rental Duration<input type="text" name="rentalDuration" value="" /> 
+		Rental Duration<input type="text" name="rentalDuration"/> 
 			
-		Rental Rate: <input type="text" name="rentalRate" value="" /> 
+		Rental Rate: <input type="text" name="rentalRate" /> 
 			
 		Length: <input type="text" name="length" value="" /> 
 			
-		Replacement Cost: <input type="text" name="replacementCost" value="" /> 
+		Replacement Cost: <input type="text" name="replacementCost"/> 
 			
 		Rating: <input type="text" name="rating" value="" /> 
 			
-		Special Features: <input type="text" name="specialFeatures" value="" />
-		
+		Special Features: <input list="text" name="specialFeatures"/>
+		<datalist id = 'text'>
+               <option value = "Trailers">Trailers</option>
+               <option value = "Commentaries">Commentaries</option>
+               <option value = "Deleted Scenes">Deleted Scenes</option>
+               <option value = "Behind the Scenes">Behind The Scenes</option>
+               </datalist>
+ 
 		 <input type="submit"
 			value="Create The Film"/>
 									
