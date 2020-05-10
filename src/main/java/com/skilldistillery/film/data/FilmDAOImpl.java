@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -64,7 +65,7 @@ public class FilmDAOImpl implements FilmDAO {
 		try {
 			conn = DriverManager.getConnection(url, user, pass);
 			conn.setAutoCommit(false);
-			PreparedStatement stmt = conn.prepareStatement(sql);
+			PreparedStatement stmt = conn.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
 			stmt.setString(1, film.getTitle());
 			stmt.setString(2, film.getDescription());
 			stmt.setInt(3, film.getReleaseYear());
@@ -75,17 +76,29 @@ public class FilmDAOImpl implements FilmDAO {
 			stmt.setDouble(8, film.getReplacementCost());
 			stmt.setString(9, film.getRating());
 			stmt.setString(10, film.getSpecialFeatures());
+			System.out.println(stmt);
 			int uc = stmt.executeUpdate();
 			System.out.println(uc + " film records created");
 			ResultSet keys = stmt.getGeneratedKeys();
-			
+
 			tempFilm.setLanguageId(1);
 			while (keys.next()) {
+				int filmId = keys.getInt(1);
 				tempFilm.setId(keys.getInt(1));
-				System.out.println("New film ID: " + keys.getInt(1));
+				System.out.println("New film ID: " + filmId);
 			}
+			conn.commit();
 		} catch (SQLException e) {
+			System.err.println("Error during inserts");
 			e.printStackTrace();
+			if (conn != null) {
+				try {
+					conn.rollback();
+				} catch (SQLException e1) {
+					System.err.println("Error rolling back.");
+					e1.printStackTrace();
+				}
+			}
 			return null;
 		}
 		return tempFilm;
