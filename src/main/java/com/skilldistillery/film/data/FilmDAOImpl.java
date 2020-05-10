@@ -65,7 +65,7 @@ public class FilmDAOImpl implements FilmDAO {
 		try {
 			conn = DriverManager.getConnection(url, user, pass);
 			conn.setAutoCommit(false);
-			PreparedStatement stmt = conn.prepareStatement(sql,Statement.RETURN_GENERATED_KEYS);
+			PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 			stmt.setString(1, film.getTitle());
 			stmt.setString(2, film.getDescription());
 			stmt.setInt(3, film.getReleaseYear());
@@ -111,9 +111,32 @@ public class FilmDAOImpl implements FilmDAO {
 	}
 
 	@Override
-	public void deleteFilm(Film film) {
-		// TODO Auto-generated method stub
+	public Film deleteFilm(Film film) {
+		Film filmToDelete = film;
+		String sql = "DELETE FROM film WHERE id = ?";
+		Connection conn = null;
+		try {
+			conn = DriverManager.getConnection(url, user, pass);
+			conn.setAutoCommit(false);
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.setInt(1, film.getId());
+			int uc = stmt.executeUpdate();
+			System.out.println(uc + " film records deleted");
+			conn.commit();
+		} catch (SQLException e) {
+			System.err.println("Error during delete");
+			e.printStackTrace();
+			if (conn != null) {
+				try {
+					conn.rollback();
+				} catch (SQLException e1) {
+					System.err.println("Error rolling back.");
+					e1.printStackTrace();
+				}
+			}
+		}
 
+		return filmToDelete;
 	}
 
 	private Film mapFilmDataToFilm(ResultSet rs) throws SQLException {
