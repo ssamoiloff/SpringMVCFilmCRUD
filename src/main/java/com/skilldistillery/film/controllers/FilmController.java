@@ -5,7 +5,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
-
 import com.skilldistillery.film.data.FilmDAO;
 import com.skilldistillery.film.entities.Film;
 
@@ -16,18 +15,21 @@ public class FilmController {
     public void setFilmDAO(FilmDAO filmDAO) {
         this.filmDAO = filmDAO;
     }
+    
     @RequestMapping(path = "home.do")
     public ModelAndView home() {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("WEB-INF/views/home.jsp");
         return mv;
     }
+    
     @RequestMapping(path = "searchById.do")
     public ModelAndView searchById() {
         ModelAndView mv = new ModelAndView();
         mv.setViewName("WEB-INF/views/searchById.jsp");
         return mv;
     }
+    
     @RequestMapping(path = "getFilmById.do", params = "filmId", method = RequestMethod.GET)
     public ModelAndView getFilmById(String filmId) {
         ModelAndView mv = new ModelAndView();
@@ -44,18 +46,18 @@ public class FilmController {
     
     @RequestMapping(path="createFilm.do", method = RequestMethod.POST)
     public ModelAndView createFilm(Film film, RedirectAttributes redir) {
-    	Film checkFilm = filmDAO.createFilm(film);
-    	ModelAndView mv = new ModelAndView();
-    	redir.addFlashAttribute("checkFilm", checkFilm);
-    	mv.setViewName("redirect:filmCreated.do");
-    	return mv;
+        Film checkFilm = filmDAO.createFilm(film);
+        ModelAndView mv = new ModelAndView();
+        redir.addFlashAttribute("checkFilm", checkFilm);
+        mv.setViewName("redirect:filmCreated.do");
+        return mv;
     }
     
     @RequestMapping(path="filmCreated.do", method = RequestMethod.GET)
     public ModelAndView created() {
-    	ModelAndView mv = new ModelAndView();
-    	mv.setViewName("WEB-INF/views/createFilm.jsp");
-    	return mv;
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("WEB-INF/views/createFilm.jsp");
+        return mv;
     }
     
     @RequestMapping(path = "createAFilmPage.do")
@@ -68,18 +70,18 @@ public class FilmController {
     
     @RequestMapping(path="deleteFilm.do", method = RequestMethod.POST)
     public ModelAndView deleteFilm(Film film, RedirectAttributes redir) {
-    	Film localFilm = filmDAO.deleteFilm(film);
-    	ModelAndView mv = new ModelAndView();
-    	redir.addFlashAttribute("deleteFilm", localFilm);
-    	mv.setViewName("redirect:filmDeleted.do");
-    	return mv;
+        Film localFilm = filmDAO.deleteFilm(film);
+        ModelAndView mv = new ModelAndView();
+        redir.addFlashAttribute("deleteFilm", localFilm);
+        mv.setViewName("redirect:filmDeleted.do");
+        return mv;
     }
     
     @RequestMapping(path="filmDeleted.do", method = RequestMethod.GET)
     public ModelAndView deleted() {
-    	ModelAndView mv = new ModelAndView();
-    	mv.setViewName("WEB-INF/views/deleteFilm.jsp");
-    	return mv;
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("WEB-INF/views/deleteFilm.jsp");
+        return mv;
     }
     
     @RequestMapping(path = "deleteAFilmPage.do")
@@ -89,4 +91,3 @@ public class FilmController {
         return mv;
    }
 }
-
