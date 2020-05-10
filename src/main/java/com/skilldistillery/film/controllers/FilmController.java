@@ -1,4 +1,5 @@
 package com.skilldistillery.film.controllers;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,84 +11,100 @@ import com.skilldistillery.film.entities.Film;
 
 @Controller
 public class FilmController {
-    @Autowired
-    private FilmDAO filmDAO;
-    public void setFilmDAO(FilmDAO filmDAO) {
-        this.filmDAO = filmDAO;
-    }
-    
-    @RequestMapping(path = "home.do")
-    public ModelAndView home() {
-        ModelAndView mv = new ModelAndView();
-        mv.setViewName("WEB-INF/views/home.jsp");
-        return mv;
-    }
-    
-    @RequestMapping(path = "searchById.do")
-    public ModelAndView searchById() {
-        ModelAndView mv = new ModelAndView();
-        mv.setViewName("WEB-INF/views/searchById.jsp");
-        return mv;
-    }
-    
-    @RequestMapping(path = "getFilmById.do", params = "filmId", method = RequestMethod.GET)
-    public ModelAndView getFilmById(String filmId) {
-        ModelAndView mv = new ModelAndView();
-        Film film = filmDAO.findFilmById(Integer.parseInt(filmId));
-        boolean filmNull = false;
-        mv.addObject("film", film);
-        if (film == null) {
-        	filmNull = true;
-        	mv.addObject("filmNull", filmNull);
-        }
-        mv.setViewName("WEB-INF/views/searchById.jsp");
-        return mv;
-    }
-    
-    @RequestMapping(path="createFilm.do", method = RequestMethod.POST)
-    public ModelAndView createFilm(Film film, RedirectAttributes redir) {
-        Film checkFilm = filmDAO.createFilm(film);
-        ModelAndView mv = new ModelAndView();
-        redir.addFlashAttribute("checkFilm", checkFilm);
-        mv.setViewName("redirect:filmCreated.do");
-        return mv;
-    }
-    
-    @RequestMapping(path="filmCreated.do", method = RequestMethod.GET)
-    public ModelAndView created() {
-        ModelAndView mv = new ModelAndView();
-        mv.setViewName("WEB-INF/views/createFilm.jsp");
-        return mv;
-    }
-    
-    @RequestMapping(path = "createAFilmPage.do")
-    public ModelAndView createAFilmPage() {
-        ModelAndView mv = new ModelAndView();
-        mv.setViewName("WEB-INF/views/createFilm.jsp");
-        return mv;
-    }
-      
-    
-    @RequestMapping(path="deleteFilm.do", method = RequestMethod.POST)
-    public ModelAndView deleteFilm(Film film, RedirectAttributes redir) {
-        Film localFilm = filmDAO.deleteFilm(film);
-        ModelAndView mv = new ModelAndView();
-        redir.addFlashAttribute("deleteFilm", localFilm);
-        mv.setViewName("redirect:filmDeleted.do");
-        return mv;
-    }
-    
-    @RequestMapping(path="filmDeleted.do", method = RequestMethod.GET)
-    public ModelAndView deleted() {
-        ModelAndView mv = new ModelAndView();
-        mv.setViewName("WEB-INF/views/deleteFilm.jsp");
-        return mv;
-    }
-    
-    @RequestMapping(path = "deleteAFilmPage.do")
-    public ModelAndView deleteAFilmPage() {
-        ModelAndView mv = new ModelAndView();
-        mv.setViewName("WEB-INF/views/deleteFilm.jsp");
-        return mv;
-   }
+	@Autowired
+	private FilmDAO filmDAO;
+
+	public void setFilmDAO(FilmDAO filmDAO) {
+		this.filmDAO = filmDAO;
+	}
+
+	@RequestMapping(path = "home.do")
+	public ModelAndView home() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("WEB-INF/views/home.jsp");
+		return mv;
+	}
+
+	@RequestMapping(path = "searchById.do")
+	public ModelAndView searchById() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("WEB-INF/views/searchById.jsp");
+		return mv;
+	}
+
+	@RequestMapping(path = "getFilmById.do", params = "filmId", method = RequestMethod.GET)
+	public ModelAndView getFilmById(String filmId) {
+		ModelAndView mv = new ModelAndView();
+		Film film = filmDAO.findFilmById(Integer.parseInt(filmId));
+		boolean filmNull = false;
+		mv.addObject("film", film);
+		if (film == null) {
+			filmNull = true;
+			mv.addObject("filmNull", filmNull);
+		}
+		mv.setViewName("WEB-INF/views/searchById.jsp");
+		return mv;
+	}
+
+	@RequestMapping(path = "createFilm.do", method = RequestMethod.POST)
+	public ModelAndView createFilm(Film film, RedirectAttributes redir) {
+		Film checkFilm = filmDAO.createFilm(film);
+		ModelAndView mv = new ModelAndView();
+		redir.addFlashAttribute("checkFilm", checkFilm);
+		mv.setViewName("redirect:filmCreated.do");
+		return mv;
+	}
+
+	@RequestMapping(path = "filmCreated.do", method = RequestMethod.GET)
+	public ModelAndView created() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("WEB-INF/views/createFilm.jsp");
+		return mv;
+	}
+
+	@RequestMapping(path = "createAFilmPage.do")
+	public ModelAndView createAFilmPage() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("WEB-INF/views/createFilm.jsp");
+		return mv;
+	}
+
+	@RequestMapping(path = "deleteFilm.do", method = RequestMethod.POST)
+	public ModelAndView deleteFilm(Film film, RedirectAttributes redir) {
+		Film localFilm = filmDAO.deleteFilm(film);
+		ModelAndView mv = new ModelAndView();
+		redir.addFlashAttribute("deletedFilm", localFilm);
+		mv.setViewName("redirect:filmDeleted.do");
+		return mv;
+	}
+
+	@RequestMapping(path = "filmDeleted.do", method = RequestMethod.GET)
+	public ModelAndView deleted() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("WEB-INF/views/searchById.jsp");
+		return mv;
+	}
+//    
+//    @RequestMapping(path = "deleteAFilmPage.do")
+//    public ModelAndView deleteAFilmPage() {
+//        ModelAndView mv = new ModelAndView();
+//        mv.setViewName("WEB-INF/views/searchById.jsp");
+//        return mv;
+//   }
+
+	@RequestMapping(path = "updateFilm.do", method = RequestMethod.POST)
+	public ModelAndView updateFilm(Film film, RedirectAttributes redir) {
+		Film localFilm = filmDAO.updateFilm(film);
+		ModelAndView mv = new ModelAndView();
+		redir.addFlashAttribute("updateFilm", localFilm);
+		mv.setViewName("redirect:filmUpdated.do");
+		return mv;
+	}
+
+	@RequestMapping(path = "filmUpdate.do", method = RequestMethod.GET)
+	public ModelAndView Updated() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("WEB-INF/views/searchById.jsp");
+		return mv;
+	}
 }
