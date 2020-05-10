@@ -11,9 +11,7 @@
 </head>
 <body>
 	<a href="searchById.do">Search By Film ID</a>
-	
-	<a href="getFilmById.do">Search By Film ID</a>	
-		
-​
+
+	<a href="getFilmById.do">Search By Film ID</a> ​
 </body>
 </html>
