@@ -57,16 +57,38 @@ public class FilmDAOImpl implements FilmDAO {
 
 	@Override
 	public Film createFilm(Film film) {
-		Film film = null;
-		String sql = "INSERT INTO film (title, description, release_year, rental_duration, rental_rate, length, "
-				+ "replacement_cost, )WHERE film.id = ?";
+		Film tempFilm = film;
+		String sql = "INSERT INTO film (title, description, release_year, language_id, rental_duration, rental_rate, "
+				+ "length, replacement_cost, rating, special_features) VALUES (?,?,?,?,?,?,?,?,?,?)";
 		Connection conn = null;
 		try {
 			conn = DriverManager.getConnection(url, user, pass);
+			conn.setAutoCommit(false);
 			PreparedStatement stmt = conn.prepareStatement(sql);
-			stmt.setInt(1, filmId);
-			ResultSet rs = stmt.executeQuery();
-		return film;
+			stmt.setString(1, film.getTitle());
+			stmt.setString(2, film.getDescription());
+			stmt.setInt(3, film.getReleaseYear());
+			stmt.setInt(4, 1);
+			stmt.setInt(5, film.getRentalDuration());
+			stmt.setDouble(6, film.getRentalRate());
+			stmt.setInt(7, film.getLength());
+			stmt.setDouble(8, film.getReplacementCost());
+			stmt.setString(9, film.getRating());
+			stmt.setString(10, film.getSpecialFeatures());
+			int uc = stmt.executeUpdate();
+			System.out.println(uc + " film records created");
+			ResultSet keys = stmt.getGeneratedKeys();
+			
+			tempFilm.setLanguageId(1);
+			while (keys.next()) {
+				tempFilm.setId(keys.getInt(1));
+				System.out.println("New film ID: " + keys.getInt(1));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+		return tempFilm;
 	}
 
 	@Override
