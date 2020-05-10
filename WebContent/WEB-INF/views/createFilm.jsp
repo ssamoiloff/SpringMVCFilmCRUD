@@ -26,33 +26,39 @@
 			
 		Replacement Cost: <input type="text" name="replacementCost"/> 
 			
-		Rating: <input type="text" name="rating" value="" /> 
-			
-		Special Features: <input list="text" name="specialFeatures"/>
+		Rating: <input list="text" name="rating"/> 
 		<datalist id = 'text'>
-               <option value = "Trailers">Trailers</option>
-               <option value = "Commentaries">Commentaries</option>
-               <option value = "Deleted Scenes">Deleted Scenes</option>
-               <option value = "Behind the Scenes">Behind The Scenes</option>
-               </datalist>
- 
-		 <input type="submit"
+               <option value = "G">
+               <option value = "PG">
+               <option value = "PG13">
+               <option value = "R">
+                <option value = "NC17">
+               </datalist> 
+		
+		
+<!-- 		<!-- only works in web browser, not in spring	-->
+		Special Features: <input list="text2" name="specialFeatures"/>
+		<datalist id = 'text2'>
+               <option value = "Trailers">
+               <option value = "Commentaries">
+               <option value = "Deleted Scenes">
+               <option value = "Behind the Scenes">
+               </datalist> 
+                              
+               
+<!--                <label for="specialfeatures">Special Feature:</label> <select
+			id="text">
+			<option value="Trailer">Trailer</option>
+			<option value="Commentaries">Commentaries</option>
+			<option value="Deleted Scenes">Deleted Scenes</option>
+			<option value="Behind the Scenes">Behind the Scenes</option>
+		</select>
+ -->
+
+	<input type="submit"
 			value="Create The Film"/>
 									
 	</form>
 	${film}
 </body>
 </html>
-
-<!-- 
-		this.id = id;
-		this.title = title;
-		this.description = description;
-		this.releaseYear = releaseYear;
-		this.languageId = languageId;
-		this.rentalDuration = rentalDuration;
-		this.rentalRate = rentalRate;
-		this.length = length;
-		this.replacementCost = replacementCost;
-		this.rating = rating;
-		this.specialFeatures = specialFeatures; -->
