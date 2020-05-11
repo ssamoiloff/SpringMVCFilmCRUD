@@ -24,6 +24,7 @@
 		<c:when test="${film != null}">
 			<form action="deleteFilm.do" method="POST">
 			<strong><em>${film.title}</em></strong>
+			<strong><em>${film.id}</em></strong>
 			<!-- <input type="submit" value="Delete Film"/> -->
 			<input type="hidden" name="id" value="${film.id}"/>
 			<br>
@@ -31,8 +32,8 @@
 			<input type="submit" button type="button" value="Delete" class="btn btn-outline-primary"/>
 			</form>
 			<form action="updateFilm.do" method="POST" >
-			<div>
-				<input type="hidden" name="filmID" id="filmID" value="${film.id}"/><br><br>
+				<div>
+				<input type="hidden" name="id" id="filmId" value="${film.id}"/><br><br>
 				</div>
 				<div class="form-group">
 				<label for="title">Title</label><br>

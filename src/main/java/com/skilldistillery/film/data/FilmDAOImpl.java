@@ -135,6 +135,7 @@ public class FilmDAOImpl implements FilmDAO {
 			stmt.setDouble(8, film.getReplacementCost());
 			stmt.setString(9, film.getRating());
 			stmt.setString(10, film.getSpecialFeatures());
+			stmt.setInt(11, film.getId());
 			int uc = stmt.executeUpdate();
 			System.out.println(uc + " film records updated");
 			conn.commit();
