@@ -30,6 +30,12 @@ public class FilmController {
 		mv.setViewName("WEB-INF/views/searchById.jsp");
 		return mv;
 	}
+	@RequestMapping(path = "searchByKeywordPage.do")
+	public ModelAndView searchByKeywordPage() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("WEB-INF/views/searchByKeyword.jsp");
+		return mv;
+	}
 	@RequestMapping(path = "getFilmById.do", params = "filmId", method = RequestMethod.GET)
 	public ModelAndView getFilmById(String filmId) {
 		ModelAndView mv = new ModelAndView();
