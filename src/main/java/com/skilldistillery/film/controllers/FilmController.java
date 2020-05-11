@@ -112,14 +112,16 @@ public class FilmController {
 		return mv;
 	}
 	@RequestMapping(path = "updateOrDelete.do", params="update", method = RequestMethod.POST)
-	public ModelAndView update() {
+	public ModelAndView update(Film film) {
 		ModelAndView mv = new ModelAndView();
+		mv.addObject(film);
 		mv.setViewName("WEB-INF/views/updateFilm.do");
 		return mv;
 	}
 	@RequestMapping(path = "updateOrDelete.do", params="delete", method = RequestMethod.POST)
-	public ModelAndView delete() {
+	public ModelAndView delete(Film film) {
 		ModelAndView mv = new ModelAndView();
+		mv.addObject(film);
 		mv.setViewName("WEB-INF/views/deleteFilm.do");
 		return mv;
 	}
