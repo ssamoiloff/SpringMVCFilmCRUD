@@ -30,7 +30,10 @@
 			<br>
 			<input type="submit" button type="button" value="Delete" class="btn btn-outline-primary"/>
 			</form>
-			<form method="POST" action="updateFilm.do">
+			<form action="updateFilm.do" method="POST" >
+			<div>
+				<input type="hidden" name="filmID" id="filmID" value="${film.id}"/><br><br>
+				</div>
 				<div class="form-group">
 				<label for="title">Title</label><br>
 				<input type="text" name="title" id="title" value="${film.title}"/><br><br>
@@ -82,8 +85,8 @@
 							<option value="Behind the Scenes">
 						</datalist>
 				</div><br><br>
+			<input type="submit" button type="button" value="Update" class="btn btn-outline-primary"/>
 			</form>
-			<button type="submit" class="btn btn-outline-primary">Update</button>
 		</c:when>
 		<c:when test="${filmNull == true}">
 			<div class="alert alert-danger" role="alert">Film not found</div>

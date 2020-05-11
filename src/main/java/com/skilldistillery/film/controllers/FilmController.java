@@ -90,15 +90,15 @@ public class FilmController {
 	public ModelAndView updateFilm(Film film, RedirectAttributes redir) {
 		Film localFilm = filmDAO.updateFilm(film);
 		ModelAndView mv = new ModelAndView();
-		redir.addFlashAttribute("updateFilm", localFilm);
+		redir.addFlashAttribute("updatedFilm", localFilm);
 		mv.setViewName("redirect:filmUpdated.do");
 		return mv;
 	}
 
-	@RequestMapping(path = "filmUpdate.do", method = RequestMethod.GET)
+	@RequestMapping(path = "filmUpdated.do", method = RequestMethod.GET)
 	public ModelAndView Updated() {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("WEB-INF/views/searchById.jsp");
+		mv.setViewName("WEB-INF/views/filmUpdated.jsp");
 		return mv;
 	}
 }
