@@ -7,7 +7,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+
 import org.springframework.stereotype.Repository;
+
 import com.skilldistillery.film.entities.Actor;
 import com.skilldistillery.film.entities.Film;
 @Repository
@@ -170,6 +172,35 @@ public class FilmDAOImpl implements FilmDAO {
 		}
 		return filmToDelete;
 	}
+	
+	
+	public List<Film> searchByKeyword(String keyword) {
+		 List<Film> films = new ArrayList<>();
+		try {
+			Connection conn = DriverManager.getConnection(url, user, pass);
+			String sql = " where title like ? OR description like ?";;
+	        PreparedStatement stmt = conn.prepareStatement(sql);
+	        stmt.setString(1, "%" + keyword + "%");
+	        stmt.setString(2, "%" + keyword + "%");
+			ResultSet rs = stmt.executeQuery();
+			while (rs.next()) {
+				
+			Film film = mapFilmDataToFilm(rs);
+			films.add(film);
+			}
+				rs.close();
+				stmt.close();
+				conn.close();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+			return null;
+		}
+		return films;
+	}
+
+	
+	
 	private Film mapFilmDataToFilm(ResultSet rs) throws SQLException {
 		Film film = new Film(rs.getInt("film.id"), rs.getString("film.title"), rs.getString("film.description"),
 				rs.getInt("film.release_year"), rs.getInt("film.language_id"), rs.getInt("film.rental_duration"),
