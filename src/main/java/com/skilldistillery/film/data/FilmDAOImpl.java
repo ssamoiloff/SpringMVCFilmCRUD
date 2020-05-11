@@ -188,6 +188,7 @@ public class FilmDAOImpl implements FilmDAO {
 			while (rs.next()) {
 				
 			Film film = mapFilmDataToFilm(rs);
+			film.setCategory(category(rs.getInt("id")));
 			films.add(film);
 			}
 			
