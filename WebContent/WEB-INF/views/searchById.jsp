@@ -24,8 +24,6 @@
 		<c:when test="${film != null}">
 			<form action="deleteFilm.do" method="POST">
 			<strong><em>${film.title}</em></strong>
-			<strong><em>${film.id}</em></strong>
-			<!-- <input type="submit" value="Delete Film"/> -->
 			<input type="hidden" name="id" value="${film.id}"/>
 			<br>
 			<br>

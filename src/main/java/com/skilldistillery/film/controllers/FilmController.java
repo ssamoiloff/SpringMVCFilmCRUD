@@ -1,14 +1,18 @@
 package com.skilldistillery.film.controllers;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 import com.skilldistillery.film.data.FilmDAO;
 import com.skilldistillery.film.entities.Film;
 @Controller
 public class FilmController {
+	
 	@Autowired
 	private FilmDAO filmDAO;
 	public void setFilmDAO(FilmDAO filmDAO) {
@@ -37,6 +41,20 @@ public class FilmController {
 			mv.addObject("filmNull", filmNull);
 		}
 		mv.setViewName("WEB-INF/views/searchById.jsp");
+		return mv;
+	}
+	@RequestMapping(path = "searchByKeyword.do", params = "keyword", method = RequestMethod.GET)
+	public ModelAndView searchFilmByKeyword(String keyword, RedirectAttributes redir) {
+		ModelAndView mv = new ModelAndView();
+		List<Film> films = filmDAO.searchByKeyword(keyword);
+		redir.addFlashAttribute("film", films);
+		mv.setViewName("redirect:returnedFilms.do");
+		return mv;
+	}
+	@RequestMapping(path = "returnedFilms.do", method = RequestMethod.GET)
+	public ModelAndView returnedFilms() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("WEB-INF/views/returnedFilms.jsp");
 		return mv;
 	}
 	@RequestMapping(path = "createFilm.do", method = RequestMethod.POST)
