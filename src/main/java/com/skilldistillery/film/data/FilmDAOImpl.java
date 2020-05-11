@@ -1,5 +1,4 @@
 package com.skilldistillery.film.data;
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -8,24 +7,18 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.springframework.stereotype.Repository;
-
 import com.skilldistillery.film.entities.Actor;
 import com.skilldistillery.film.entities.Film;
-
 @Repository
 public class FilmDAOImpl implements FilmDAO {
-
 	private static String url = "jdbc:mysql://localhost:3306/sdvid?useSSL=false&useLegacyDatetimeCode=false&serverTimezone=MST";
 	private final String user = "root";
 	private final String pass = "root";
 	private final String fullDataQuery = "SELECT film.*, language.* FROM film JOIN language "
 			+ "ON film.language_id = language.id ";
-
 	public FilmDAOImpl() throws ClassNotFoundException {
 	}
-
 	static {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -33,7 +26,6 @@ public class FilmDAOImpl implements FilmDAO {
 			e.printStackTrace();
 		}
 	}
-
 	@Override
 	public Film findFilmById(int filmId) {
 		Film film = null;
@@ -43,7 +35,6 @@ public class FilmDAOImpl implements FilmDAO {
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, filmId);
 			ResultSet rs = stmt.executeQuery();
-
 			if (rs.next()) {
 				film = mapFilmDataToFilm(rs);
 			} else {
@@ -57,7 +48,6 @@ public class FilmDAOImpl implements FilmDAO {
 		}
 		return film;
 	}
-
 	@Override
 	public Film createFilm(Film film) {
 		Film tempFilm = film;
@@ -78,12 +68,9 @@ public class FilmDAOImpl implements FilmDAO {
 			stmt.setDouble(8, film.getReplacementCost());
 			stmt.setString(9, film.getRating());
 			stmt.setString(10, film.getSpecialFeatures());
-			System.out.println(film);
 			int uc = stmt.executeUpdate();
-			System.out.println(film);
 			System.out.println(uc + " film records created");
 			ResultSet keys = stmt.getGeneratedKeys();
-
 			tempFilm.setLanguageId(1);
 			while (keys.next()) {
 				int filmId = keys.getInt(1);
@@ -106,14 +93,21 @@ public class FilmDAOImpl implements FilmDAO {
 		}
 		return tempFilm;
 	}
-
 	@Override
 	public Film updateFilm(Film film) {
 		Film filmToUpdate = film;
-		String sql = "UPDATE film SET " + "film.title = ?, " + "film.description = ?, " + "film.release_year = ?, "
-				+ "film.language_id = ?, " + "film.rental_duration = ?, " + "film.rental_rate = ?, "
-				+ "film.length = ?, " + "film.replacement_cost = ?, " + "film.rating = ?, "
-				+ "film.special_features = ? " + "WHERE film.id = ?";
+		String sql = "UPDATE film SET "
+				+ "film.title = ?, "
+				+ "film.description = ?, "
+				+ "film.release_year = ?, "
+				+ "film.language_id = ?, "
+				+ "film.rental_duration = ?, "
+				+ "film.rental_rate = ?, "
+				+ "film.length = ?, "
+				+ "film.replacement_cost = ?, "
+				+ "film.rating = ?, "
+				+ "film.special_features = ? "
+				+ "WHERE film.id = ?";
 		Connection conn = null;
 		try {
 			conn = DriverManager.getConnection(url, user, pass);
@@ -146,10 +140,8 @@ public class FilmDAOImpl implements FilmDAO {
 			}
 			return null;
 		}
-
 		return filmToUpdate;
 	}
-
 	@Override
 	public Film deleteFilm(Film film) {
 		Film filmToDelete = film;
@@ -176,10 +168,8 @@ public class FilmDAOImpl implements FilmDAO {
 			}
 			return null;
 		}
-
 		return filmToDelete;
 	}
-
 	private Film mapFilmDataToFilm(ResultSet rs) throws SQLException {
 		Film film = new Film(rs.getInt("film.id"), rs.getString("film.title"), rs.getString("film.description"),
 				rs.getInt("film.release_year"), rs.getInt("film.language_id"), rs.getInt("film.rental_duration"),
@@ -188,7 +178,6 @@ public class FilmDAOImpl implements FilmDAO {
 		film.setActors(name(rs.getInt("film.id")));
 		return film;
 	}
-
 	public List<Actor> name(int filmId) throws SQLException {
 		List<Actor> names = new ArrayList<>();
 		Actor actor;
@@ -211,5 +200,4 @@ public class FilmDAOImpl implements FilmDAO {
 		stmt.close();
 		return names;
 	}
-
 }

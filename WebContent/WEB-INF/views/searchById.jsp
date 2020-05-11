@@ -57,7 +57,7 @@
 				</div>
 				<div class="form-group">
 				<label for="length">Length</label><br>
-				<input type="text" name="length" value="${film.length}"/><br><br>
+				<input type="text" name="length" id="length" value="${film.length}"/><br><br>
 				</div>
 				<div class="form-group">
 				<label for="repCost">Replacement Cost</label><br>
@@ -67,7 +67,6 @@
 				<label for="rating">Rating</label><br>
 				<input list="rating" name="rating" value="${film.rating}"/>
 						<datalist id='rating'>
-							<%-- <option value="${film.specialFeatures}" selected> --%>
 							<option value="G">
 							<option value="PG">
 							<option value="PG13">
@@ -79,7 +78,6 @@
 				<label for="spFeat">Special Features</label><br>
 					<input list="spFeatList" name="specialFeatures" value="${film.specialFeatures}"/>
 						<datalist id='spFeatList'>
-							<%-- <option value="${film.specialFeatures}" selected> --%>
 							<option value="Trailers">
 							<option value="Commentaries">
 							<option value="Deleted Scenes">
