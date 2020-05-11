@@ -111,4 +111,16 @@ public class FilmController {
 		mv.setViewName("WEB-INF/views/filmUpdated.jsp");
 		return mv;
 	}
+	@RequestMapping(path = "updateOrDelete.do", params="update", method = RequestMethod.POST)
+	public ModelAndView update() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("WEB-INF/views/updateFilm.do");
+		return mv;
+	}
+	@RequestMapping(path = "updateOrDelete.do", params="delete", method = RequestMethod.POST)
+	public ModelAndView delete() {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("WEB-INF/views/deleteFilm.do");
+		return mv;
+	}
 }
