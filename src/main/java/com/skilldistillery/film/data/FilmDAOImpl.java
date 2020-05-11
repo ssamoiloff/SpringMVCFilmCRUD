@@ -178,6 +178,7 @@ public class FilmDAOImpl implements FilmDAO {
 					e1.printStackTrace();
 				}
 			}
+			return null;
 		}
 
 		return filmToDelete;

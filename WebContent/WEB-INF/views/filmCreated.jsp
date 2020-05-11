@@ -14,7 +14,8 @@
 <body>
 	<c:choose>
 		<c:when test="${film != null}">
-			<div class="alert alert-success" role="alert">WORKING<%-- ${checkFilm} --%></div>
+			<div class="alert alert-success" role="alert">Film Created</div>
+			${film}
 		</c:when>
 		<c:when test="${film == null}">
 			<div class="alert alert-danger" role="alert">Film not submitted</div>

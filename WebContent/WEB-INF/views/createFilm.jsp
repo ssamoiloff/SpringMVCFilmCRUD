@@ -15,7 +15,7 @@
 	<h5>Create Your Film</h5>
 	<h7>Fill out the below fields.</h7>
 
-	<form action="createFilm.do" method="post">
+	<form action="createFilm.do" enctype="multipart/form-data" method="post">
 		<div class="form-group">
 			Title: <input type="text" name="title" />
 		</div>
@@ -47,7 +47,6 @@
 				<option value="NC17">
 			</datalist>
 		</div>
-
 
 		<!-- 		<!-- only works in web browser, not in spring	-->
 		<div class="form-group">

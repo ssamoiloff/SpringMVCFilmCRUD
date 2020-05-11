@@ -14,18 +14,23 @@
 <body>
 	<h5>Enter film ID</h5>
 	<form action="getFilmById.do" method="GET">
-		<input type="text" name="filmId" value="" /> <input type="submit"
-			value="Search Film" button type="button"
-			class="btn btn-primary btn-sm" />
+		<input type="text" name="filmId" value="" /> 
+		<input type="submit" value="Search Film" button type="button"
+			class="btn btn-primary btn-sm"/>
 	</form>
 	<br>
 	<br>
 	<c:choose>
 		<c:when test="${film != null}">
+			<form action="deleteFilm.do" method="POST">
 			<strong><em>${film.title}</em></strong>
+			<!-- <input type="submit" value="Delete Film"/> -->
+			<input type="hidden" name="id" value="${film.id}"/>
 			<br>
 			<br>
-			<form method="POST">
+			<input type="submit" button type="button" value="Delete" class="btn btn-outline-primary"/>
+			</form>
+			<form method="POST" action="updateFilm.do">
 				<div class="form-group">
 				<label for="title">Title</label><br>
 				<input type="text" name="title" id="title" value="${film.title}"/><br><br>
@@ -78,8 +83,7 @@
 						</datalist>
 				</div><br><br>
 			</form>
-			<button type="submit" formaction="deleteFilm.do" class="btn btn-outline-primary">Delete</button>
-			<button type="submit" formaction="updateFilm.do" class="btn btn-outline-primary">Update</button>
+			<button type="submit" class="btn btn-outline-primary">Update</button>
 		</c:when>
 		<c:when test="${filmNull == true}">
 			<div class="alert alert-danger" role="alert">Film not found</div>

@@ -16,7 +16,7 @@
 <body>
 	<a href="searchById.do" class="btn btn-primary btn-lg active"
 		role="button" aria-pressed="true">Search By Film ID</a>
-
+	<br><br>
 	<a href="createAFilmPage.do" class="btn btn-primary btn-lg active"
 		role="button" aria-pressed="true">Create a Film</a> ​
 
