@@ -14,15 +14,17 @@
 	crossorigin="anonymous">
 </head>
 <body>
-	<a href="searchById.do" class="btn btn-primary btn-lg active"
-		role="button" aria-pressed="true">Search By Film ID</a>
-	<br><br>
-	<a href="createAFilmPage.do" class="btn btn-primary btn-lg active"
-		role="button" aria-pressed="true">Create a Film</a> ​
-		<br><br>
-		<a href="searchByKeywordPage.do" class="btn btn-primary btn-lg active"
-		role="button" aria-pressed="true">Search Film By Keyword</a> ​
-		
+
+	<div class="btn-group" role="group" aria-label="Basic example">
+		<a href="searchById.do" class="btn btn-primary btn-lg active"
+			role="button" aria-pressed="true">Search By Film ID</a> <br>
+		<br> <a href="createAFilmPage.do"
+			class="btn btn-primary btn-lg active" role="button"
+			aria-pressed="true">Create a Film</a> ​ <br>
+		<br> <a href="searchByKeywordPage.do"
+			class="btn btn-primary btn-lg active" role="button"
+			aria-pressed="true">Search Film By Keyword</a> ​
+	</div>
 
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
