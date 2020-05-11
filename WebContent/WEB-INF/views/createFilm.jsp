@@ -15,7 +15,7 @@
 	<h5>Create Your Film</h5>
 	<h7>Fill out the below fields.</h7>
 
-	<form action="createFilm.do" enctype="multipart/form-data" method="post">
+	<form action="createFilm.do" method="post">
 		<div class="form-group">
 			Title: <input type="text" name="title" />
 		</div>
@@ -51,7 +51,7 @@
 		<!-- 		<!-- only works in web browser, not in spring	-->
 		<div class="form-group">
 			Special Features: <input list="text2" name="specialFeatures" />
-			<datalist id='text2'>
+			<datalist id='text'>
 				<option value="Trailers">
 				<option value="Commentaries">
 				<option value="Deleted Scenes">

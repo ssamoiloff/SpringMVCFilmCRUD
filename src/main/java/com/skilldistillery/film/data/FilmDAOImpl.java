@@ -78,7 +78,9 @@ public class FilmDAOImpl implements FilmDAO {
 			stmt.setDouble(8, film.getReplacementCost());
 			stmt.setString(9, film.getRating());
 			stmt.setString(10, film.getSpecialFeatures());
+			System.out.println(film);
 			int uc = stmt.executeUpdate();
+			System.out.println(film);
 			System.out.println(uc + " film records created");
 			ResultSet keys = stmt.getGeneratedKeys();
 
@@ -108,18 +110,10 @@ public class FilmDAOImpl implements FilmDAO {
 	@Override
 	public Film updateFilm(Film film) {
 		Film filmToUpdate = film;
-		String sql = "UPDATE film SET "
-				+ "film.title = ?, "
-				+ "film.description = ?, "
-				+ "film.release_year = ?, "
-				+ "film.language_id = ?, "
-				+ "film.rental_duration = ?, "
-				+ "film.rental_rate = ?, "
-				+ "film.length = ?, "
-				+ "film.replacement_cost = ?, "
-				+ "film.rating = ?, "
-				+ "film.special_features = ? "
-				+ "WHERE film.id = ?";
+		String sql = "UPDATE film SET " + "film.title = ?, " + "film.description = ?, " + "film.release_year = ?, "
+				+ "film.language_id = ?, " + "film.rental_duration = ?, " + "film.rental_rate = ?, "
+				+ "film.length = ?, " + "film.replacement_cost = ?, " + "film.rating = ?, "
+				+ "film.special_features = ? " + "WHERE film.id = ?";
 		Connection conn = null;
 		try {
 			conn = DriverManager.getConnection(url, user, pass);
