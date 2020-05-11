@@ -15,7 +15,7 @@
 	<h5>Create Your Film</h5>
 	<h7>Fill out the below fields.</h7>
 
-	<form action="createFilm.do" enctype="multipart/form-data" method="post">
+	<form action="createFilm.do" method="post">
 		<div class="form-group">
 			Title: <input type="text" name="title" />
 		</div>
