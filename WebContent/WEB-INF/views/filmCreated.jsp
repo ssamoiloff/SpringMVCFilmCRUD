@@ -15,7 +15,7 @@
 	<c:choose>
 		<c:when test="${film != null}">
 			<div class="alert alert-success" role="alert">Film created</div>
-			${film}
+			<%-- ${film} --%>
 		</c:when>
 		<c:when test="${film == null}">
 			<div class="alert alert-danger" role="alert">Film could not be created</div>
