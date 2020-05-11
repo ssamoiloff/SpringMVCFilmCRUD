@@ -12,9 +12,16 @@
 	crossorigin="anonymous">
 </head>
 <body>
-		<form action="updateOrDelete.do" method="post">
 	<c:forEach var="f" items="${film}">
-			<p>
+		<form action="deleteFilm.do" method="POST">
+			<strong><em>${f.title}</em></strong>
+				<input type="hidden" name="id" value="${f.id}"/>
+				<br>
+				<br>
+				<input type="submit" button type="button" value="Delete" class="btn btn-outline-primary"/>
+		</form>
+		<form action="updateFilmPage.do" method="POST">
+			
 			<table>
 				<tr>
 					<td>Title: ${f.title}</td>
@@ -44,13 +51,23 @@
 					<td>Special Features: ${f.specialFeatures}</td>
 				</tr>
 			</table>
-			</p>
+			<input type="hidden" name="id" id="filmId" value="${f.id}"/>
+			<input type="hidden" name="title" id="title" value="${f.title}"/>
+			<input type="hidden" name="description" id="description" value="${f.description}"/>
+			<input type="hidden" name="releaseYear" id="releaseYear" value="${f.releaseYear}"/>
+			<input type="hidden" name="languageId" id="languageId" value="${f.languageId}"/>
+			<input type="hidden" name="rentalDuration" id="rentalDuration" value="${f.rentalDuration}"/>
+			<input type="hidden" name="rentalRate" id="rentalRate" value="${f.rentalRate}"/>
+			<input type="hidden" name="length" id="length" value="${f.length}"/>
+			<input type="hidden" name="replacementCost" id="replacementCost" value="${f.replacementCost}"/>
+			<input type="hidden" name="rating" id="rating" value="${f.rating}"/>
+			<input type="hidden" name="specialFeatures" id="specialFeatures" value="${f.specialFeatures}"/>
+			
 			<input type="submit" value="Update" name="update" button type="button"
 			class="btn btn-primary btn-sm"/>
-			<input type="submit" value="Delete" name="delete" button type="button"
-			class="btn btn-primary btn-sm"/>
-	</c:forEach>
+			
 		</form>
+	</c:forEach>
 
 
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

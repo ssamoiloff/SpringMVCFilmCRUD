@@ -99,6 +99,7 @@ public class FilmController {
 	}
 	@RequestMapping(path = "updateFilm.do", method = RequestMethod.POST)
 	public ModelAndView updateFilm(Film film, RedirectAttributes redir) {
+		System.out.println("In updateFilm.do....."+film);
 		Film localFilm = filmDAO.updateFilm(film);
 		ModelAndView mv = new ModelAndView();
 		redir.addFlashAttribute("updatedFilm", localFilm);
@@ -111,18 +112,13 @@ public class FilmController {
 		mv.setViewName("WEB-INF/views/filmUpdated.jsp");
 		return mv;
 	}
-	@RequestMapping(path = "updateOrDelete.do", params="update", method = RequestMethod.POST)
-	public ModelAndView update(Film film) {
+	@RequestMapping(path = "updateFilmPage.do")
+	public ModelAndView updatePage(Film film, RedirectAttributes redir) {
 		ModelAndView mv = new ModelAndView();
-		mv.addObject(film);
-		mv.setViewName("WEB-INF/views/updateFilm.do");
+		System.out.println(film.toString());
+		redir.addFlashAttribute("film", film);
+		mv.setViewName("WEB-INF/views/updateFilm.jsp");
 		return mv;
 	}
-	@RequestMapping(path = "updateOrDelete.do", params="delete", method = RequestMethod.POST)
-	public ModelAndView delete(Film film) {
-		ModelAndView mv = new ModelAndView();
-		mv.addObject(film);
-		mv.setViewName("WEB-INF/views/deleteFilm.do");
-		return mv;
-	}
+	
 }
