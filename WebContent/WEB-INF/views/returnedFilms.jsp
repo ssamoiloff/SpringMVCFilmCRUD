@@ -53,6 +53,22 @@
 				<tr>
 					<td>Special Features: ${f.specialFeatures}</td>
 				</tr>
+				<tr>
+					<td>---CATEGORY---</td>
+				</tr>
+				<tr>
+					<td>${f.category}</td>
+				</tr>
+				<tr>
+					<td>---CAST---</td>
+				</tr>
+				<tr>
+					<c:forEach var="f2" items="${f.actors}">
+						<tr>
+							<td>${f2.firstName} ${f2.lastName}</td>
+						</tr>
+					</c:forEach>
+				</tr>
 			</table>
 			<input type="hidden" name="id" id="filmId" value="${f.id}" /> <input
 				type="hidden" name="title" id="title" value="${f.title}" /> <input
@@ -73,7 +89,6 @@
 
 		</form>
 		</c:forEach>
-	
 
 	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
 		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
