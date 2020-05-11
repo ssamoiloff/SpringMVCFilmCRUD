@@ -176,10 +176,12 @@ public class FilmDAOImpl implements FilmDAO {
 	
 	public List<Film> searchByKeyword(String keyword) {
 		 List<Film> films = new ArrayList<>();
+		 Connection conn = null;
 		try {
-			Connection conn = DriverManager.getConnection(url, user, pass);
-			String sql = " where title like ? OR description like ?";;
-	        PreparedStatement stmt = conn.prepareStatement(sql);
+			conn = DriverManager.getConnection(url, user, pass);
+			String sql = "SELECT film.* FROM film WHERE title like ? OR description like ?";;
+			conn.setAutoCommit(false);
+			PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
 	        stmt.setString(1, "%" + keyword + "%");
 	        stmt.setString(2, "%" + keyword + "%");
 			ResultSet rs = stmt.executeQuery();
@@ -188,9 +190,6 @@ public class FilmDAOImpl implements FilmDAO {
 			Film film = mapFilmDataToFilm(rs);
 			films.add(film);
 			}
-				rs.close();
-				stmt.close();
-				conn.close();
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
