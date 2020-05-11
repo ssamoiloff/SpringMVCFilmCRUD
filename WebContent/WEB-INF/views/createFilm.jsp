@@ -15,31 +15,39 @@
 	<h5>Create Your Film</h5>
 	<h7>Fill out the below fields.</h7>
 
-	<form action="createFilm.do" enctype="multipart/form-data" method="post">
+	<form action="createFilm.do" method="POST">
 		<div class="form-group">
-			Title: <input type="text" name="title" />
+		<label for="title">Title</label><br>
+			<input type="text" id="title" name="title" value=""/>
 		</div>
 		<div class="form-group">
-			Description: <input type="text" name="description" />
+		<label for="desc">Description</label><br>
+			<input type="text" id="desc" name="description" value=""/>
 		</div>
 		<div class="form-group">
-			Release Year: <input type="text" name="releaseYear" />
+		<label for="relYear">Release Year</label><br>
+			<input type="text" id="relYear" name="releaseYear" value=""/>
 		</div>
 		<div class="form-group">
-			Rental Duration<input type="text" name="rentalDuration" />
+		<label for="rentDur">Rental Duration</label><br>
+			<input type="text" id="rentDur" name="rentalDuration" value=""/>
 		</div>
 		<div class="form-group">
-			Rental Rate: <input type="text" name="rentalRate" />
+		<label for="rentRate">Rental Rate</label><br>
+			<input type="text" id="rentRate" name="rentalRate" value=""/>
 		</div>
 		<div class="form-group">
-			Length: <input type="text" name="length" value="" />
+		<label for="length">Length</label><br>
+			<input type="text" id="length" name="length" value=""/>
 		</div>
 		<div class="form-group">
-			Replacement Cost: <input type="text" name="replacementCost" />
+		<label for="repCost">Replacement Cost</label><br>
+			<input type="text" id="repCost" name="replacementCost" value=""/>
 		</div>
 		<div class="form-group">
-			Rating: <input list="text" name="rating" />
-			<datalist id='text'>
+		<label for="rating">Rating</label><br>
+		<input list="rating" name="rating" />
+			<datalist id='rating'>
 				<option value="G">
 				<option value="PG">
 				<option value="PG13">
@@ -50,18 +58,17 @@
 
 		<!-- 		<!-- only works in web browser, not in spring	-->
 		<div class="form-group">
-			Special Features: <input list="text2" name="specialFeatures" />
-			<datalist id='text2'>
+		<label for="spFeatList">Special Features</label><br>
+			<input list="spFeatList" name="specialFeatures" />
+			<datalist id='spFeatList'>
 				<option value="Trailers">
 				<option value="Commentaries">
 				<option value="Deleted Scenes">
 				<option value="Behind the Scenes">
 			</datalist>
 		</div>
-
 		<input type="submit" value="Create The Film" button type="button"
 			class="btn btn-primary btn-sm" />
-
 	</form>
 	<a href="home.do" button type="button" class="btn btn-outline-primary">Home</a>
 
