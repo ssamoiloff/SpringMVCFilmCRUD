@@ -5,14 +5,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Search By ID</title>
+<title>Search Film by ID</title>
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
 	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
 	crossorigin="anonymous">
 </head>
 <body>
-	<h5>Enter film ID</h5>
+	<h5>Enter Film ID</h5>
 	<form action="getFilmById.do" method="GET">
 		<input type="text" name="filmId" value="" /> 
 		<input type="submit" value="Search Film" button type="button"
@@ -25,6 +25,26 @@
 			<form action="deleteFilm.do" method="POST">
 			<strong><em>${film.title}</em></strong>
 				<input type="hidden" name="id" value="${film.id}"/>
+				<table>
+					<thead>
+						<tr>
+							<td>---CAST---</td>
+						</tr>
+					</thead>
+					<tbody>
+					<c:forEach var="f" items="${film.actors}">
+						<tr>
+							<td>${f.firstName} ${f.lastName}</td>
+						</tr>
+					</c:forEach>
+						<tr>
+							<td>---CATEGORY---</td>
+						</tr>
+						<tr>
+							<td>${film.category}</td>
+						</tr>
+					</tbody>
+				</table>
 				<br>
 				<br>
 				<input type="submit" button type="button" value="Delete" class="btn btn-outline-primary"/>

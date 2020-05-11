@@ -15,6 +15,7 @@ public class Film {
 	private String rating;
 	private String specialFeatures;
 	private String language;
+	private String category;
 	List<Actor> actors;
 	
 	public Film() {}
@@ -185,6 +186,12 @@ public class Film {
 				+ "Language ID: " + languageId + " Rental Duration: " + rentalDuration + " Rental Rate: " + rentalRate
 				+ " Length: " + length + " Replacement Cost: " + replacementCost + " Rating: " + rating
 				+ " Special Features: " + specialFeatures + " Actors: " + actors;
+	}
+	public String getCategory() {
+		return category;
+	}
+	public void setCategory(String category) {
+		this.category = category;
 	}
 	
 }
