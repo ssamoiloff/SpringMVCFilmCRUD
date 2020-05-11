@@ -82,7 +82,7 @@ public class FilmController {
 	@RequestMapping(path = "filmDeleted.do", method = RequestMethod.GET)
 	public ModelAndView deleted() {
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("WEB-INF/views/searchById.jsp");
+		mv.setViewName("WEB-INF/views/filmDeleted.jsp");
 		return mv;
 	}
 

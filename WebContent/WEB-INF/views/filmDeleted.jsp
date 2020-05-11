@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Film Creation Results</title>
+<title>Film Delete Results</title>
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
 	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
@@ -13,12 +13,12 @@
 </head>
 <body>
 	<c:choose>
-		<c:when test="${film != null}">
-			<div class="alert alert-success" role="alert">Film created</div>
+		<c:when test="${deletedFilm != null}">
+			<div class="alert alert-success" role="alert">Film deleted</div>
 			${film}
 		</c:when>
-		<c:when test="${film == null}">
-			<div class="alert alert-danger" role="alert">Film could not be created</div>
+		<c:when test="${deletedFilm == null}">
+			<div class="alert alert-danger" role="alert">Film could not be deleted</div>
 		</c:when>
 		<c:otherwise>
 
