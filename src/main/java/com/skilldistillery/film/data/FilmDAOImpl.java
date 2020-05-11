@@ -15,8 +15,8 @@ import com.skilldistillery.film.entities.Film;
 @Repository
 public class FilmDAOImpl implements FilmDAO {
 	private static String url = "jdbc:mysql://localhost:3306/sdvid?useSSL=false&useLegacyDatetimeCode=false&serverTimezone=MST";
-	private final String user = "root";
-	private final String pass = "root";
+	private final String user = "student";
+	private final String pass = "student";
 	public FilmDAOImpl() throws ClassNotFoundException {
 	
 	}

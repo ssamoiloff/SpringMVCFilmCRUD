@@ -94,7 +94,7 @@
 				</div>
 				<div class="form-group">
 				<label for="rating">Rating</label><br>
-@@ -95,8 +95,8 @@
+
 				</div>
 				<div class="form-group">
 				<label for="spFeat">Special Features</label><br>
