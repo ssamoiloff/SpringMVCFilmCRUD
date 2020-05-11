@@ -59,28 +59,28 @@
 				<input type="text" name="title" id="title" value="${film.title}"/><br><br>
 				</div>
 				<div class="form-group">
-				<label for="desc">Description</label><br>
-				<input type="text" name="description" id="desc" value="${film.description}"/><br><br>
+				<label for="description">Description</label><br>
+				<input type="text" name="description" id="description" value="${film.description}"/><br><br>
 				</div>
 				<div class="form-group">
-				<label for="relYear">Release Year</label><br>
-				<input type="text" name="release year" id="relYear" value="${film.releaseYear}"/><br><br>
+				<label for="releaseYeah">Release Year</label><br>
+				<input type="text" name="releaseYear" id="releaseYear" value="${film.releaseYear}"/><br><br>
 				</div>
 				<div class="form-group">
-				<label for="rentDur">Rental Duration</label><br>
-				<input type="text" name="rental duration" id="rentDur" value="${film.rentalDuration}"/><br><br>
+				<label for="rentalDuration">Rental Duration</label><br>
+				<input type="text" name="rentalDuration" id="rentalDuration" value="${film.rentalDuration}"/><br><br>
 				</div>
 				<div class="form-group">
-				<label for="rentRate">Rental Rate</label><br>
-				<input type="text" name="rental rate" id="rentRate" value="${film.title}"/><br><br>
+				<label for="rentalRate">Rental Rate</label><br>
+				<input type="text" name="rentalRate" id="rentalRate" value="${film.rentalRate}"/><br><br>
 				</div>
 				<div class="form-group">
 				<label for="length">Length</label><br>
 				<input type="text" name="length" id="length" value="${film.length}"/><br><br>
 				</div>
 				<div class="form-group">
-				<label for="repCost">Replacement Cost</label><br>
-				<input type="text" name="replacement cost" id="repCost" value="${film.replacementCost}"/><br><br>
+				<label for="replacementCost">Replacement Cost</label><br>
+				<input type="text" name="replacementCost" id="replacementCost" value="${film.replacementCost}"/><br><br>
 				</div>
 				<div class="form-group">
 				<label for="rating">Rating</label><br>
@@ -95,8 +95,8 @@
 				</div>
 				<div class="form-group">
 				<label for="spFeat">Special Features</label><br>
-				<input list="spFeatList" name="specialFeatures" value="${film.specialFeatures}"/>
-					<datalist id='spFeatList'>
+				<input list="specialFeaturesList" name="specialFeatures" value="${film.specialFeatures}"/>
+					<datalist id='specialFeaturesList'>
 						<option value="Trailers">
 						<option value="Commentaries">
 						<option value="Deleted Scenes">
